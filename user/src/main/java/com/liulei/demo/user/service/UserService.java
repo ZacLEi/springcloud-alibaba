@@ -22,7 +22,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return user.getId();
     }
 
-    public List<User> selectByPage(Integer pageNum, Integer pageSize,@Nullable User user) {
+    public Object selectByPage(Integer pageNum, Integer pageSize,@Nullable User user) {
         IPage<User> page = new Page<>(pageNum,pageSize);
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         if (user!= null) {
@@ -31,10 +31,10 @@ public class UserService extends ServiceImpl<UserMapper, User> {
             }else if (user.getGender()!= null ){
                 wrapper.eq("gender",user.getGender());
             }else if (user.getName()!= null ){
-                wrapper.like("name","%"+user.getName()+"%");
+                wrapper.eq("name",user.getName());
             }
         }
 
-        return userMapper.selectPage(page, wrapper).getRecords();
+        return userMapper.selectPage(page, wrapper);
     }
 }

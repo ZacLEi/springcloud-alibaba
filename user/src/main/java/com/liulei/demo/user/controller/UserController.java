@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.liulei.demo.user.entity.User;
 import com.liulei.demo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,9 +77,9 @@ public class UserController {
      * @return
      */
     @GetMapping("/user/page")
-    public List<User> getUserByPage(@RequestParam("pageNum")Integer pageNum,
+    public Object getUserByPage(@RequestParam("pageNum")Integer pageNum,
                                     @RequestParam("pageSize") Integer pageSize,
-                                    @RequestBody User user) {
+                                    @RequestBody @Nullable User user) {
         return userService.selectByPage(pageNum,pageSize,user);
     }
 }
