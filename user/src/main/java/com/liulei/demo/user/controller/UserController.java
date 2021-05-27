@@ -14,23 +14,43 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 根据id查询用户信息
+     * @param id
+     * @return
+     */
     @GetMapping("/user")
     public User getUser(@RequestParam("id")final Long id) {
         return userService.getById(id);
     }
 
+    /**
+     * 添加用户
+     * @param user
+     * @return
+     */
     @PostMapping("/user")
     @Transactional
     public Long addUser(@RequestBody final User user) {
         return userService.add(user);
     }
 
+    /**
+     * 删除用户
+     * @param id
+     */
     @DeleteMapping("/user/{id}")
     @Transactional
     public void deleteUser(@PathVariable("id")final Long id){
         userService.removeById(id);
     }
 
+    /**
+     * 修改用户
+     * @param id
+     * @param user
+     * @return
+     */
     @PutMapping("/user/{id}")
     @Transactional
     public User updateUser(@PathVariable("id")final Long id,@RequestBody final User user) {
@@ -39,8 +59,26 @@ public class UserController {
         return user;
     }
 
+    /**
+     * 获取列表
+     * @return
+     */
     @GetMapping("/users")
     public List<User> getUserList() {
         return userService.getBaseMapper().selectList(new QueryWrapper<User>());
+    }
+
+    /**
+     * 分页查询
+     * @param pageNum
+     * @param pageSize
+     * @param user
+     * @return
+     */
+    @GetMapping("/user/page")
+    public List<User> getUserByPage(@RequestParam("pageNum")Integer pageNum,
+                                    @RequestParam("pageSize") Integer pageSize,
+                                    @RequestBody User user) {
+        return userService.selectByPage(pageNum,pageSize,user);
     }
 }
