@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        # 这里面的nacos地址是你自己的nacos-server的地址
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8
+    username: root
+    password: 123456
+server:
+  port: 7001
