@@ -25,6 +25,11 @@ public class UserController {
         return userService.getById(id);
     }
 
+    @GetMapping("/user/name")
+    public User getUserByName(@RequestParam("username")String username) {
+        return userService.getOne(new QueryWrapper<User>().eq("name", username));
+    }
+
     /**
      * 添加用户
      * @param user
