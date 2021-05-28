@@ -26,6 +26,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+<!--        nacos 服务发现-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
@@ -36,10 +37,22 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+<!--        feign http rpc-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+<!--        sentinel熔断 降级-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-transport-simple-http</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.liulei.demo</groupId>
             <artifactId>orders</artifactId>

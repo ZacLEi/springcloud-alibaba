@@ -1,13 +1,15 @@
 package com.liulei.demo.api.clients;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.liulei.demo.order.entity.Orders;
+import com.liulei.demo.api.fallback.OrderClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "order")
+@FeignClient(value = "order",fallback = OrderClientFallback.class)
 public interface OrderClient {
     @GetMapping("/order")
     public Orders getOrder(@RequestParam("id")final Long id);

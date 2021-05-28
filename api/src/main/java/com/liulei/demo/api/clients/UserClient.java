@@ -1,5 +1,6 @@
 package com.liulei.demo.api.clients;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.liulei.demo.user.entity.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.lang.Nullable;

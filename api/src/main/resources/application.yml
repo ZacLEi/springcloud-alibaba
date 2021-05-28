@@ -9,6 +9,9 @@ spring:
         # 这里面的nacos地址是你自己的nacos-server的地址
         enabled: true
         service: ${spring.application.name}
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&serverTimezone=GMT%2B8
@@ -19,3 +22,6 @@ server:
 ribbon:
   ConnectTimeout: 50000 #请求连接的超时时间，默认时间为1秒
   ReadTimeout: 50000 #请求处理的超时时间
+feign:
+  sentinel:
+    enabled: true

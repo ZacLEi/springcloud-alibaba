@@ -15,3 +15,6 @@ spring:
     password: 123456
 server:
   port: 7001
+ribbon:
+  ConnectTimeout: 50000 #请求连接的超时时间，默认时间为1秒
+  ReadTimeout: 50000 #请求处理的超时时间
