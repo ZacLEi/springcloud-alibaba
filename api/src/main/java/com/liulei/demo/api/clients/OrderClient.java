@@ -12,25 +12,25 @@ import java.util.List;
 @FeignClient(value = "order",fallback = OrderClientFallback.class)
 public interface OrderClient {
     @GetMapping("/order")
-    public Orders getOrder(@RequestParam("id")final Long id);
+    Orders getOrder(@RequestParam("id") final Long id);
 
     @PostMapping("/order")
-    public Long addOrder(@RequestBody final Orders orders);
+    Long addOrder(@RequestBody final Orders orders);
 
     @DeleteMapping("/order/{id}")
-    public void deleteOrder(@PathVariable("id")final Long id);
+    void deleteOrder(@PathVariable("id") final Long id);
 
     @PutMapping("/order/{id}")
-    public Orders updateOrder(@PathVariable("id")final Long id, @RequestBody final Orders orders);
+    Orders updateOrder(@PathVariable("id") final Long id, @RequestBody final Orders orders);
 
     @GetMapping("/orders")
-    public List<Orders> getOrderList();
+    List<Orders> getOrderList();
 
     @GetMapping("/order/page")
-    public Object getOrderByPage(@RequestParam("pageNum")Integer pageNum,
-                                 @RequestParam("pageSize") Integer pageSize,
-                                 @RequestBody @Nullable Orders orders);
+    Object getOrderByPage(@RequestParam("pageNum") Integer pageNum,
+                          @RequestParam("pageSize") Integer pageSize,
+                          @RequestBody @Nullable Orders orders);
 
     @GetMapping("/order/userId")
-    public List<Orders> getOrdersByUserId(@RequestParam("userId") Long userId);
+    List<Orders> getOrdersByUserId(@RequestParam("userId") Long userId);
 }
