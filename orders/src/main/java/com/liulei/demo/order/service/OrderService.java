@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.liulei.demo.order.entity.Orders;
 import com.liulei.demo.order.mapper.OrderMapper;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class OrderService extends ServiceImpl<OrderMapper, Orders> {
     @Autowired
     private OrderMapper orderMapper;
 
+    @GlobalTransactional(timeoutMills = 300000,name = "my_test_tx_group")
     public Long add(Orders orders) {
         orderMapper.insert(orders);
         return orders.getId();

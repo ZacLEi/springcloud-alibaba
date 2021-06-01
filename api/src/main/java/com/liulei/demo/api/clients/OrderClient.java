@@ -1,7 +1,6 @@
 package com.liulei.demo.api.clients;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.liulei.demo.order.entity.Orders;
+import com.liulei.demo.api.entity.Orders;
 import com.liulei.demo.api.fallback.OrderClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.lang.Nullable;

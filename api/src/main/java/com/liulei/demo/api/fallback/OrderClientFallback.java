@@ -1,7 +1,7 @@
 package com.liulei.demo.api.fallback;
 
 import com.liulei.demo.api.clients.OrderClient;
-import com.liulei.demo.order.entity.Orders;
+import com.liulei.demo.api.entity.Orders;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

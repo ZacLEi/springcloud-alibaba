@@ -3,6 +3,7 @@ package com.liulei.demo.order.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.liulei.demo.order.entity.Orders;
 import com.liulei.demo.order.service.OrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +33,6 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order")
-    @Transactional
     public Long addOrder(@RequestBody final Orders orders) {
         orders.setCreateTime(new Date());
         return orderService.add(orders);
