@@ -38,6 +38,7 @@ public class UserController {
     @PostMapping("/user")
     @Transactional
     public Long addUser(@RequestBody final User user) {
+        user.setId(System.currentTimeMillis());
         return userService.add(user);
     }
 

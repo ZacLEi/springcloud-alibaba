@@ -1,0 +1,43 @@
+server:
+  port: 7004
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          # 这里如果是true的话，会无视下面设定的routes规则
+          enabled: false
+      routes:
+        - id: order
+          uri: lb://order
+          orser: 1
+          predicates:
+            # Method 方法谓词，这里是匹配 GET 请求
+#            - Method=GET
+            - Path=/order-service/**
+          # 过滤器
+          filters:
+            #路径转发时向上去除一级
+            - StripPrefix=1
+        - id: user
+          uri: lb://user
+          orser: 1
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      #打开端点详情
+      show-details: always

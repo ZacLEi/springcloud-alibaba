@@ -10,7 +10,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Orders {
-    @TableId
     private Long id;
     private String itemName;
     private Double price;

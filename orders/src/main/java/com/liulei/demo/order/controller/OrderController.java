@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class OrderController {
@@ -35,6 +36,7 @@ public class OrderController {
     @PostMapping("/order")
     public Long addOrder(@RequestBody final Orders orders) {
         orders.setCreateTime(new Date());
+        orders.setId(System.currentTimeMillis());
         return orderService.add(orders);
     }
 
